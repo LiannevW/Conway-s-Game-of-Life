@@ -50,10 +50,18 @@ class Grid extends PureComponent {
   }
 }
 
+// class Buttons extends PureComponent {
+//   render(){
+//     return(
+//
+//     )
+//   }
+// }
+
 class Main extends PureComponent {
   constructor () {
     super();
-    this.speed = 100;
+    this.speed = 700;
     this.rows = 30;
     this.cols = 50;
 
@@ -71,7 +79,7 @@ class Main extends PureComponent {
     })
   }
 
-  seed = () => {
+  seedButton = () => {
     let gridCopy = arrayClone(this.state.gridFull);
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -87,11 +95,19 @@ class Main extends PureComponent {
 
   playButton = () => {
     clearInterval(this.intervalId)
-    this.intervalId = setInterval(this.play, this.seed);
+    this.intervalId = setInterval(this.play, this.speed);
   }
 
   pauseButton = () => {
     clearInterval(this.intervalId);
+  }
+
+  clearButton = () => {
+    const grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+    this.setState({
+      gridFull: grid,
+      generation: 0
+    })
   }
 
   play = () => {
@@ -120,8 +136,8 @@ class Main extends PureComponent {
 
   }
 
-  componentDidMount() {
-    this.seed();
+  componentWillMount() {
+    this.seedButton();
     this.playButton();
   }
 
@@ -137,6 +153,12 @@ class Main extends PureComponent {
           selectBox = {this.selectBox}
         />
         <h1>Generations: {this.state.generation}</h1>
+        <div className="button">
+          <button onClick={this.playButton}>Play</button>
+          <button onClick={this.pauseButton}>Pause</button>
+          <button onClick={this.clearButton}>Clear</button>
+          <button onClick={this.seedButton}>Seed</button>
+        </div>
       </div>
     )
   }
