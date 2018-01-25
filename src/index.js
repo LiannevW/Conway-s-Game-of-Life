@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react'
+import { Glyphicon } from 'react-bootstrap';
 import './index.css';
+
 
 class Box extends PureComponent {
   selectBox = () => {
@@ -20,7 +22,7 @@ class Box extends PureComponent {
 
 class Grid extends PureComponent {
   render() {
-    const width = this.props.cols * 16
+    const width = this.props.cols * 14
     var rowsArr = []
 
     var boxClass = "";
@@ -153,11 +155,11 @@ class Main extends PureComponent {
           selectBox = {this.selectBox}
         />
         <h1>Generations: {this.state.generation}</h1>
-        <div className="button">
-          <button onClick={this.playButton}>Play</button>
-          <button onClick={this.pauseButton}>Pause</button>
-          <button onClick={this.clearButton}>Clear</button>
-          <button onClick={this.seedButton}>Seed</button>
+        <div className="test">
+          <button className="button" onClick={this.playButton}><Glyphicon glyph="play" />Play</button>
+          <button className="button" onClick={this.pauseButton}><Glyphicon glyph="pause" />Pause</button>
+          <button className="button" onClick={this.clearButton}><Glyphicon glyph="remove" />Clear</button>
+          <button className="button" onClick={this.seedButton}><Glyphicon glyph="tree-conifer" />Seed</button>
         </div>
       </div>
     )
