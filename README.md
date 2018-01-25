@@ -4,7 +4,7 @@ Conway's Game of Life tutorial (practicing React).
 
 # Preview
 
-![alt text]()
+![alt text](https://github.com/LiannevW/Conway-s-Game-of-Life/blob/master/src/fixtures/Screen%20Shot.png)
 
 # Running application
 
